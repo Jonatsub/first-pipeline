@@ -11,8 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+<<<<<<< HEAD
 .env
 coverage
+=======
+>>>>>>> b36843d (Integrate Stellar Security Solutions React frontend with Express backend)
 
 # Editor directories and files
 .vscode/*
