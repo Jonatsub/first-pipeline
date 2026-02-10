@@ -1,10 +1,11 @@
-const http = require('http');
+import http from 'http';
+import app from './index.js';
 
 function test() {
   const options = {
     hostname: 'localhost',
     port: 3000,
-    path: '/status',
+    path: '/api/status',
     method: 'GET'
   };
 
@@ -39,7 +40,6 @@ function test() {
 }
 
 // Start server, run test, then exit
-const app = require('./index.js');
 const server = app.listen(3000, () => {
   setTimeout(() => {
     test();
