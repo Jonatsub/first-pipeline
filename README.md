@@ -1,88 +1,122 @@
-![CI Status](https://github.com/Jonatsub/first-pipeline/actions/workflows/ci.yml/badge.svg)
+First Pipeline - Stellar Security Solutions
 
-# First Pipeline - Stellar Security Solutions
+A modern web application combining a React frontend (Vite) with an Express backend.
 
-A modern web application combining a React frontend with an Express backend.
+CI/CD (GitHub Actions)
 
-## Tech Stack
+This repo uses a GitHub Actions workflow (.github/workflows/ci.yml) that runs on:
 
-**Frontend:**
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- shadcn-ui components
+push to main and develop
 
-**Backend:**
-- Node.js
-- Express
+pull requests to main
 
-## Development
+The workflow:
 
-### Prerequisites
-- Node.js 18+ and npm
+installs dependencies (npm ci)
 
-### Setup
+runs tests (npm test)
 
-```bash
-# Install dependencies
-npm install
+builds a Docker image
 
-# Start development server (Vite)
-npm run dev
-```
+runs a smoke test by starting the container and printing logs
 
-The development server will run at `http://localhost:5173`
+Tech Stack
 
-### Available Scripts
+Frontend:
 
-- `npm run dev` - Start Vite development server
-- `npm run build` - Build the React app for production
-- `npm run preview` - Preview the production build locally
-- `npm run lint` - Run ESLint
-- `npm test` - Run tests
-- `npm start` - Start the Express server (serves built app)
+React 18
 
-## Production Deployment
+TypeScript
 
-### Build and Run
+Vite
 
-```bash
-# Build the React app
-npm run build
+Tailwind CSS
 
-# Start the Express server
-npm start
-```
+shadcn-ui components
+
+Backend:
+
+Node.js
+
+Express
+
+Development
+
+Prerequisites:
+
+Node.js 18+ and npm
+
+Setup:
+
+Install dependencies: npm install
+
+Start dev server: npm run dev
+
+The development server runs on http://localhost:5173 by default.
+Override port (example): PORT=3000 npm run dev
+
+Available scripts:
+
+npm run dev - Start Vite development server
+
+npm run build - Build the React app for production
+
+npm run preview - Preview the production build locally
+
+npm run lint - Run ESLint
+
+npm test - Run tests (Vitest)
+
+npm start - Start the Express server
+
+Docker
+
+Build and run the container:
+
+Build: docker build -t first-pipeline .
+
+Run: docker run --rm -p 3000:3000 first-pipeline
+
+Open: http://localhost:3000
+
+Production Deployment
+
+Build and run locally:
+
+Build: npm run build
+
+Run: npm start
 
 The Express server will:
-- Serve the built React app from the `dist/` directory
-- Expose API endpoints at `/api/*`
-- Handle client-side routing
-- Run on port 3000 (or `PORT` environment variable)
 
-### Deploy to Render
+serve the built React app from the dist/ directory
 
-1. **Build Command:** `npm install && npm run build`
-2. **Start Command:** `npm start`
-3. The app will be available at your Render URL
+expose API endpoints at /api/*
 
-## API Endpoints
+handle client-side routing
 
-- `GET /api/status` - Health check endpoint
+run on port 3000 (or the PORT environment variable)
 
-## Project Structure
+Deploy to Render:
 
-```
+Build Command: npm install && npm run build
+
+Start Command: npm start
+
+The app will be available at your Render URL
+
+API Endpoints
+
+GET /api/status - Health check endpoint
+
+Project Structure
+
 .
-├── src/              # React source code
-├── public/           # Static assets
-├── dist/             # Built React app (generated)
-├── index.js          # Express server
-├── test.js           # Server tests
-├── vite.config.ts    # Vite configuration
-├── tailwind.config.ts # Tailwind configuration
-└── package.json      # Dependencies and scripts
-```
-
-
+├── src/ React source code
+├── public/ Static assets
+├── dist/ Built React app (generated)
+├── index.js Express server
+├── test.js Server tests
+├── vite.config.ts Vite configuration
+├── tailwind.config.ts Tailwind configuration
+└── package.json Dependencies and scripts
