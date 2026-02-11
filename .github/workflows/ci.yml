@@ -10,21 +10,26 @@ permissions:
   contents: read
 
 jobs:
-  docker-build:
+  test-and-docker:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Say hello
-        run: echo "Hello from CI/CD! 🚀"
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm test --if-present
 
       - name: Build Docker image
         run: docker build -t first-pipeline:${{ github.sha }} .
-
-      - name: List Docker images
-        run: docker images
 
       - name: Smoke test (container starts)
         run: |
