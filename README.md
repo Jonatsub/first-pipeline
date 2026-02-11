@@ -1,3 +1,5 @@
+![CI Status](https://github.com/Jonatsub/first-pipeline/actions/workflows/ci.yml/badge.svg)
+
 # First Pipeline - Stellar Security Solutions
 
 A modern web application combining a React frontend with an Express backend.
